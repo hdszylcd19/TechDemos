@@ -1,7 +1,7 @@
-package com.oneday.demo.testthread;
+package com.oneday.demo.interview_1a2b3c;
 
 /**
- * Desc:"两个线程，一个线程先打印1，一个线程再打印A；以此类推...最终输出1A2B3C...26Z"
+ * Desc:"用两个线程，一个线程先打印1，一个线程再打印A；以此类推...最终输出1a2b3c...26z"
  * Company: XueHai
  * Copyright: Copyright (c) 2016
  *
@@ -9,7 +9,7 @@ package com.oneday.demo.testthread;
  * @version 1.0
  * @since 2020/1/16 0016 11:07
  */
-public class ThreadOrderedPrint {
+public class Solution_volatile {
     private static volatile boolean sFlag = false;
 
     public static void main(String[] args) {
@@ -25,21 +25,21 @@ public class ThreadOrderedPrint {
                     }
                 }
             }
-        });
+        }, "t1");
 
         Thread t2 = new Thread(new Runnable() {
-            char c = 'A';
+            char c = 'a';
 
             @Override
             public void run() {
-                while (c <= 'Z') {
+                while (c <= 'z') {
                     if (sFlag) {
                         System.out.print(c++ + " ");
                         sFlag = false;
                     }
                 }
             }
-        });
+        }, "t2");
 
         t1.start();
         t2.start();
