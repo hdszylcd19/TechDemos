@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_notify_data_set_changed"
+        android:title="notifyDataSetChanged()"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_notify_item_changed"
+        android:title="notifyItemChanged()"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_notify_item_moved"
+        android:title="notifyItemMoved()"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_notify_item_range_changed"
+        android:title="notifyItemRangeChanged()"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_notify_item_range_inserted"
+        android:title="notifyItemRangeInserted()"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_notify_item_range_removed"
+        android:title="notifyItemRangeRemoved()"
+        app:showAsAction="never" />
+</menu>
