@@ -20,14 +20,18 @@ public abstract class BaseAlgorithmTest {
     }
 
     protected static void printTime() {
-        System.out.println("耗时 : " + (System.currentTimeMillis() - s) + "毫秒");
+        printTime("");
     }
 
-    protected static int[] getRandomArr() {
+    protected static void printTime(String pre) {
+        System.out.println(pre + "耗时 : " + (System.currentTimeMillis() - s) + "毫秒");
+    }
+
+    protected static int[] getRandomArr(int bound) {
         Random random = new Random();
-        int[] arr = new int[random.nextInt(10000)];
+        int[] arr = new int[random.nextInt(bound)];
         for (int i = 0; i < arr.length; i++) {
-            arr[i] = random.nextInt(10000);
+            arr[i] = random.nextInt(bound);
         }
 
         return arr;

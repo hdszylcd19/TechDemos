@@ -18,8 +18,8 @@ import java.util.List;
  */
 public class IntersectAlgorithmTest extends BaseAlgorithmTest {
     public static void main(String[] args) {
-        int[] arr1 = getRandomArr();
-        int[] arr2 = getRandomArr();
+        int[] arr1 = getRandomArr(100);
+        int[] arr2 = getRandomArr(100);
         System.out.println("arr1 = " + Arrays.toString(arr1));
         System.out.println("arr2 = " + Arrays.toString(arr2));
 
@@ -43,8 +43,8 @@ public class IntersectAlgorithmTest extends BaseAlgorithmTest {
         int min = Integer.MAX_VALUE;
         // 求出数组arr1中最大值与最小值
         for (int i = 0; i < arr1.length; i++) {
-            max = max < arr1[i] ? arr1[i] : max;
-            min = min > arr1[i] ? arr1[i] : min;
+            max = Math.max(max, arr1[i]);
+            min = Math.min(min, arr1[i]);
         }
 
         // 创建标记数组
