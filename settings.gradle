@@ -1,3 +1,4 @@
+include ':demo_animation'
 include ':demo_orientation'
 include ':demo_livedata'
 include ':app'
