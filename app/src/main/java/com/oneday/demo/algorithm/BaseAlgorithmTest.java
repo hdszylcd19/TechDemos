@@ -14,6 +14,7 @@ import java.util.Random;
 public abstract class BaseAlgorithmTest {
 
     private static long s;
+    private static Random sRandom = new Random();
 
     protected static void before() {
         s = System.currentTimeMillis();
@@ -28,12 +29,19 @@ public abstract class BaseAlgorithmTest {
     }
 
     protected static int[] getRandomArr(int bound) {
-        Random random = new Random();
-        int[] arr = new int[random.nextInt(bound)];
+        int[] arr = new int[sRandom.nextInt(bound)];
         for (int i = 0; i < arr.length; i++) {
-            arr[i] = random.nextInt(bound);
+            arr[i] = sRandom.nextInt(bound);
         }
 
         return arr;
+    }
+
+    protected static int getRandomInt() {
+        return getRandomInt(Integer.MAX_VALUE);
+    }
+
+    protected static int getRandomInt(int bound) {
+        return sRandom.nextInt(bound);
     }
 }
