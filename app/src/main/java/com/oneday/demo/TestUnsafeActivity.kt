@@ -9,9 +9,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
@@ -22,11 +19,13 @@ import com.google.android.material.navigation.NavigationView
 import com.google.android.material.snackbar.Snackbar
 import com.oneday.demo.bean.User
 import com.oneday.demo.unsafe.UnsafeProxy
-import com.oneday.demo.viewmodel.MyViewModel
 
-class MainActivity : AppCompatActivity() {
+/**
+ * 测试Unsafe
+ */
+class TestUnsafeActivity : AppCompatActivity() {
     companion object {
-        private val TAG = MainActivity::class.simpleName
+        private val TAG = TestUnsafeActivity::class.simpleName
     }
 
     private lateinit var appBarConfiguration: AppBarConfiguration
@@ -67,52 +66,41 @@ class MainActivity : AppCompatActivity() {
         val ageSuccess = UnsafeProxy.compareAndSwapInt(obj, ageOffset, 0, 32)
         println("nameSuccess = [$nameSuccess]; ageSuccess = [$ageSuccess]; obj = [${obj}]")
 
-        val model = ViewModelProviders.of(this)[MyViewModel::class.java]
-        model.getStrs().observe(this, Observer<List<String>> { strs ->
-            for (str in strs) {
-                Log.i(TAG, str)
-            }
-        })
-
-        testLiveData("onCreate()")
+        log("onCreate()")
     }
 
     override fun onStart() {
         super.onStart()
-        testLiveData("onStart()")
+        log("onStart()")
     }
 
     override fun onRestart() {
         super.onRestart()
-        testLiveData("onRestart()")
+        log("onRestart()")
     }
 
     override fun onResume() {
         super.onResume()
-        testLiveData("onResume()")
+        log("onResume()")
     }
 
     override fun onPause() {
         super.onPause()
-        testLiveData("onPause()")
+        log("onPause()")
     }
 
     override fun onStop() {
         super.onStop()
-        testLiveData("onStop()")
+        log("onStop()")
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        testLiveData("onDestroy()")
+        log("onDestroy()")
     }
 
-    private fun testLiveData(str: String) {
+    private fun log(str: String) {
         Log.i(TAG, str)
-        val model = ViewModelProviders.of(this)[MyViewModel::class.java]
-        val arrayList = ArrayList<String>()
-        arrayList.add("LiveData : $str")
-        (model.getStrs() as MutableLiveData).value = arrayList
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
