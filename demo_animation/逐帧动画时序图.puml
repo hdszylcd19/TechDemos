@@ -1,0 +1,336 @@
+@startuml
+
+/'标题'/
+title <size:20>逐帧动画时序图(API28)</size>
+
+
+/'声明参与者'/
+participant APP
+
+box #LightBlue
+	participant AnimationDrawable
+	participant DrawableContainer
+	participant BitmapDrawable
+    participant Drawable
+end box
+
+box #LightYellow
+    participant View
+    participant ViewGroup
+    participant ThreadedRenderer
+    participant ViewRootImpl
+    participant Choreographer
+    participant FrameHandler
+    participant FrameDisplayEventReceiver
+    participant DisplayEventReceiver
+end box
+
+participant MessageQueue
+participant native层
+
+/'AnimationDrawable:start()开始位置'/
+APP -> AnimationDrawable:start()
+activate AnimationDrawable
+
+/'调用setFrame()'/
+AnimationDrawable -> AnimationDrawable:setFrame()
+activate AnimationDrawable
+/'调用DrawableContainer:selectDrawable()'/
+AnimationDrawable -> DrawableContainer:selectDrawable()绘制当前帧图片
+activate DrawableContainer
+/'调用invalidateSelf()'/
+DrawableContainer -> Drawable:invalidateSelf()
+activate Drawable
+
+
+/'调用invalidateDrawable()'/
+Drawable ->View:invalidateDrawable()
+activate View
+View ->View:invalidate()
+activate View
+View ->View:invalidateInternal()
+activate View
+View ->ViewGroup:invalidateChild()
+activate ViewGroup
+ViewGroup ->ViewGroup:invalidateChildInParent()
+activate ViewGroup
+ViewGroup ->ViewRootImpl:invalidateChildInParent()
+activate ViewRootImpl
+ViewRootImpl ->ViewRootImpl:invalidateRectOnScreen()
+activate ViewRootImpl
+ViewRootImpl ->ViewRootImpl:scheduleTraversals()
+activate ViewRootImpl
+/'发送同步屏障消息'/
+ViewRootImpl ->MessageQueue:postSyncBarrier()
+activate MessageQueue
+MessageQueue -->ViewRootImpl
+deactivate MessageQueue
+ViewRootImpl ->Choreographer:postCallback()
+activate Choreographer
+Choreographer ->Choreographer:postCallbackDelayed()
+activate Choreographer
+Choreographer ->Choreographer:postCallbackDelayedInternal()
+activate Choreographer
+Choreographer ->Choreographer:scheduleFrameLocked()
+activate Choreographer
+Choreographer ->Choreographer:scheduleVsyncLocked()
+activate Choreographer
+Choreographer ->DisplayEventReceiver:scheduleVsync()
+activate DisplayEventReceiver
+DisplayEventReceiver ->native层:nativeScheduleVsync()
+activate native层
+deactivate native层
+/'结束调用scheduleVsync()'/
+DisplayEventReceiver -->Choreographer
+deactivate DisplayEventReceiver
+/'结束调用scheduleVsyncLocked()'/
+deactivate Choreographer
+/'结束调用scheduleFrameLocked()'/
+deactivate Choreographer
+/'结束调用postCallbackDelayedInternal()'/
+deactivate Choreographer
+/'结束调用postCallbackDelayed()'/
+deactivate Choreographer
+/'结束调用postCallback()'/
+Choreographer -->ViewRootImpl
+deactivate Choreographer
+/'结束调用scheduleTraversals()'/
+deactivate ViewRootImpl
+/'结束调用invalidateRectOnScreen()'/
+deactivate ViewRootImpl
+/'结束调用invalidateChildInParent()'/
+ViewRootImpl -->ViewGroup
+deactivate ViewRootImpl
+/'结束调用invalidateChildInParent()'/
+deactivate ViewGroup
+/'结束调用invalidateChild()'/
+ViewGroup -->View
+deactivate ViewGroup
+/'结束调用invalidateInternal()'/
+deactivate View
+/'结束调用invalidate()'/
+deactivate View
+/'结束调用invalidateDrawable()'/
+View -->Drawable
+deactivate View
+/'结束调用invalidateSelf()'/
+Drawable -->DrawableContainer
+deactivate Drawable
+/'结束调用selectDrawable()'/
+DrawableContainer -->AnimationDrawable
+deactivate DrawableContainer
+
+/'AnimationDrawable:unscheduleSelf()开始位置'/
+AnimationDrawable ->AnimationDrawable:unscheduleSelf()
+activate AnimationDrawable
+AnimationDrawable ->Drawable:unscheduleSelf()
+activate Drawable
+Drawable ->View:unscheduleDrawable()
+activate View
+View ->Choreographer:removeCallbacks(Choreographer.CALLBACK_ANIMATION)
+activate Choreographer
+Choreographer ->Choreographer:removeCallbacksInternal()
+activate Choreographer
+Choreographer ->MessageQueue:removeMessages(MSG_DO_SCHEDULE_CALLBACK)
+activate MessageQueue
+MessageQueue -->Choreographer
+deactivate MessageQueue
+
+/'结束调用Choreographer:removeCallbacksInternal()'/
+deactivate Choreographer
+/'结束调用Choreographer:removeCallbacks(Choreographer.CALLBACK_ANIMATION)'/
+Choreographer -->View
+deactivate Choreographer
+/'结束调用View:unscheduleDrawable()'/
+View -->Drawable
+deactivate View
+/'结束调用Drawable:unscheduleSelf()'/
+Drawable -->AnimationDrawable
+deactivate Drawable
+/'结束调用AnimationDrawable:unscheduleSelf()'/
+deactivate AnimationDrawable
+/'AnimationDrawable:unscheduleSelf()结束位置'/
+
+
+/'AnimationDrawable:scheduleSelf()开始位置'/
+AnimationDrawable ->AnimationDrawable:scheduleSelf()
+activate AnimationDrawable
+AnimationDrawable ->Drawable:scheduleSelf()
+activate Drawable
+Drawable ->View:scheduleDrawable()
+activate View
+View ->Choreographer:postCallbackDelayed(Choreographer.CALLBACK_ANIMATION)
+activate Choreographer
+Choreographer ->MessageQueue:sendMessageAtTime(MSG_DO_SCHEDULE_CALLBACK)
+activate MessageQueue
+
+
+MessageQueue -->Choreographer
+deactivate MessageQueue
+Choreographer -->View
+deactivate Choreographer
+View -->Drawable
+deactivate View
+Drawable -->AnimationDrawable
+deactivate Drawable
+/'结束调用AnimationDrawable:scheduleSelf()'/
+deactivate AnimationDrawable
+/'AnimationDrawable:scheduleSelf()结束位置'/
+
+/'结束setFrame()方法调用'/
+deactivate AnimationDrawable
+/'结束start()方法调用'/
+AnimationDrawable -->APP
+deactivate AnimationDrawable
+/'AnimationDrawable:start()结束位置'/
+
+/'onVsync()开始位置'/
+native层 <- :下一个屏幕刷新信号到来
+activate native层
+native层 -> FrameDisplayEventReceiver:onVsync()
+activate FrameDisplayEventReceiver
+FrameDisplayEventReceiver ->MessageQueue:mHandler.sendMessageAtTime()
+activate MessageQueue
+MessageQueue -->FrameDisplayEventReceiver
+deactivate MessageQueue
+/'结束调用onVsync()'/
+FrameDisplayEventReceiver -->native层
+deactivate FrameDisplayEventReceiver
+/'结束native层回调'/
+deactivate native层
+/'onVsync()结束位置'/
+
+/'MSG_DO_SCHEDULE_CALLBACK开始位置'/
+MessageQueue <- MessageQueue:next()
+activate MessageQueue
+MessageQueue ->FrameHandler:handleMessage(MSG_DO_SCHEDULE_CALLBACK)
+deactivate MessageQueue
+activate FrameHandler
+FrameHandler ->Choreographer:doScheduleCallback()
+activate Choreographer
+Choreographer ->Choreographer:scheduleFrameLocked()
+activate Choreographer
+Choreographer ->Choreographer:scheduleVsyncLocked()
+activate Choreographer
+Choreographer ->DisplayEventReceiver:scheduleVsync()
+activate DisplayEventReceiver
+DisplayEventReceiver ->native层:nativeScheduleVsync()
+activate native层
+deactivate native层
+
+
+/'结束调用scheduleVsync()'/
+DisplayEventReceiver -->Choreographer
+deactivate DisplayEventReceiver
+deactivate Choreographer
+deactivate Choreographer
+Choreographer -->FrameHandler
+deactivate Choreographer
+deactivate FrameHandler
+/'MSG_DO_SCHEDULE_CALLBACK结束位置'/
+
+/'FrameDisplayEventReceiver.run()开始位置'/
+MessageQueue <- MessageQueue:next()
+activate MessageQueue
+MessageQueue -> FrameDisplayEventReceiver:callback.run()
+deactivate MessageQueue
+activate FrameDisplayEventReceiver
+
+/'Choreographer:doFrame()开始位置'/
+FrameDisplayEventReceiver ->Choreographer:doFrame()
+activate Choreographer
+
+/'doCallbacks(Choreographer.CALLBACK_ANIMATION)开始位置'/
+Choreographer ->Choreographer:doCallbacks(Choreographer.CALLBACK_ANIMATION)
+activate Choreographer
+Choreographer ->AnimationDrawable:run()
+activate AnimationDrawable
+AnimationDrawable -> AnimationDrawable:nextFrame()绘制下一帧图片
+activate AnimationDrawable
+AnimationDrawable ->AnimationDrawable:setFrame()
+activate AnimationDrawable
+deactivate AnimationDrawable
+
+deactivate AnimationDrawable
+/'结束调用AnimationDrawable:run()'/
+AnimationDrawable -->Choreographer
+deactivate AnimationDrawable
+/'结束调用Choreographer:doCallbacks(Choreographer.CALLBACK_ANIMATION)'/
+deactivate Choreographer
+/'doCallbacks(Choreographer.CALLBACK_ANIMATION)结束位置'/
+
+/'doCallbacks(Choreographer.CALLBACK_TRAVERSAL)开始位置'/
+Choreographer ->Choreographer:doCallbacks(Choreographer.CALLBACK_TRAVERSAL)
+activate Choreographer
+Choreographer ->ViewRootImpl:doTraversal()
+activate ViewRootImpl
+ViewRootImpl ->MessageQueue:removeSyncBarrier()
+activate MessageQueue
+MessageQueue -->ViewRootImpl
+deactivate MessageQueue
+ViewRootImpl ->ViewRootImpl:performTraversals()
+activate ViewRootImpl
+ViewRootImpl ->ViewRootImpl:performDraw()
+activate ViewRootImpl
+ViewRootImpl ->ViewRootImpl:draw()
+activate ViewRootImpl
+ViewRootImpl ->ThreadedRenderer:draw()
+activate ThreadedRenderer
+ThreadedRenderer ->ThreadedRenderer:updateRootDisplayList()
+activate ThreadedRenderer
+ThreadedRenderer ->ThreadedRenderer:updateViewTreeDisplayList()
+activate ThreadedRenderer
+ThreadedRenderer ->View:updateDisplayListIfDirty()
+activate View
+View ->View:draw()
+activate View
+View ->View:onDraw()
+activate View
+View ->DrawableContainer:draw()
+activate DrawableContainer
+DrawableContainer ->BitmapDrawable:draw()
+activate BitmapDrawable
+
+/'结束调用BitmapDrawable:draw()'/
+BitmapDrawable -->DrawableContainer
+deactivate BitmapDrawable
+/'结束调用DrawableContainer:draw()'/
+DrawableContainer -->View
+deactivate DrawableContainer
+/'结束调用View:onDraw()'/
+deactivate View
+/'结束调用View:draw()'/
+deactivate View
+/'结束调用View:updateDisplayListIfDirty()'/
+View -->ThreadedRenderer
+deactivate View
+/'结束调用ThreadedRenderer:updateViewTreeDisplayList()'/
+deactivate ThreadedRenderer
+/'结束调用ThreadedRenderer:updateRootDisplayList()'/
+deactivate ThreadedRenderer
+/'结束调用ThreadedRenderer:draw()'/
+ThreadedRenderer -->ViewRootImpl
+deactivate ThreadedRenderer
+/'结束调用ViewRootImpl:draw()'/
+deactivate ViewRootImpl
+/'结束调用performDraw()'/
+deactivate ViewRootImpl
+/'结束调用performTraversals()'/
+deactivate ViewRootImpl
+/'结束调用doTraversal()'/
+ViewRootImpl -->Choreographer
+deactivate ViewRootImpl
+/'结束调用doCallbacks(Choreographer.CALLBACK_TRAVERSAL)'/
+deactivate Choreographer
+/'doCallbacks(Choreographer.CALLBACK_TRAVERSAL)结束位置'/
+
+/'结束调用doFrame()'/
+Choreographer -->FrameDisplayEventReceiver
+deactivate Choreographer
+/'Choreographer:doFrame()结束位置'/
+
+/'结束调用run()'/
+deactivate FrameDisplayEventReceiver
+/'FrameDisplayEventReceiver.run()结束位置'/
+
+@enduml
