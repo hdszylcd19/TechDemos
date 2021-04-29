@@ -30,5 +30,9 @@ class TestFloat {
         System.out.println("f2 = " + f2); //8388608.0
         float f3 = 8388609f;
         System.out.println("f3 = " + f3); //8388609.0
+        float f4 = 16777216f;
+        System.out.println("f4 = " + f4); //1.6777216E7
+        float f5 = 16777217f;
+        System.out.println("f5 = " + f5); //1.6777216E7
     }
 }
