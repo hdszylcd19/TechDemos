@@ -29,8 +29,12 @@ public abstract class BaseAlgorithmTest {
     }
 
     protected static int[] getRandomArr(int bound) {
-        int[] arr = new int[sRandom.nextInt(bound)];
-        for (int i = 0; i < arr.length; i++) {
+        return getRandomArr(sRandom.nextInt(bound), bound);
+    }
+
+    protected static int[] getRandomArr(int size, int bound) {
+        int[] arr = new int[size];
+        for (int i = 0; i < size; i++) {
             arr[i] = sRandom.nextInt(bound);
         }
 
