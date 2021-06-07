@@ -11,8 +11,13 @@ import com.oneday.demo.algorithm.BaseAlgorithmTest;
  */
 public class MathTest extends BaseAlgorithmTest {
     public static void main(String[] args) {
-        int a = getRandomInt();
-        int b = getRandomInt();
+        printGcd(getRandomInt(), getRandomInt());
+        printGcd(1024, 768);
+        printGcd(1200, 1920);
+        printGcd(1200, 2000);
+    }
+
+    private static void printGcd(int a, int b) {
         before();
         int gcd = gcd_division_recursive(a, b);
         printTime("gcd_division_recursive()");
