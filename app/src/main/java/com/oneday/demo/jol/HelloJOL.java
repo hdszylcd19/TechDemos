@@ -1,6 +1,9 @@
 package com.oneday.demo.jol;
 
 import org.openjdk.jol.info.ClassLayout;
+import org.openjdk.jol.vm.VM;
+
+import java.util.Arrays;
 
 /**
  * Desc: JOL(Java Object Layout)Java对象布局
@@ -29,10 +32,11 @@ public class HelloJOL {
 
         拿37090576举例,这个值是怎么计算出来的呢？其实是: 02 35 f5 10组合而来,也就是00000010 00110101 11110101 00010000对应的值;
         具体可以通过little endian big endian了解.
-        参考资料:https://blog.csdn.net/waitingbb123/article/details/80504093
+        参考资料:https://juejin.cn/post/6930889701507203085
      */
 
     public static void main(String[] args) {
+        System.out.println(VM.current().details());
         // 通过JOL打印对象布局信息
         System.out.println(ClassLayout.parseInstance(sLock).toPrintable());
 
