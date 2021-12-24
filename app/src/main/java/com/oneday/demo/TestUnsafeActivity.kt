@@ -109,8 +109,8 @@ class TestUnsafeActivity : AppCompatActivity() {
         return true
     }
 
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        when (item?.itemId) {
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
             R.id.action_settings -> {
                 Toast.makeText(this, "action_settings", Toast.LENGTH_LONG).show()
             }

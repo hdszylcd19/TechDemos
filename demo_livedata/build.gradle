@@ -3,13 +3,13 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileSdkVersion 29
-    buildToolsVersion "29.0.3"
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
 
     defaultConfig {
         applicationId "com.oneday.livedatademo"
-        minSdkVersion 21
-        targetSdkVersion 29
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
 
@@ -34,18 +34,20 @@ android {
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation 'androidx.core:core-ktx:1.3.1'
-    implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.0'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    testImplementation rootProject.ext.testDependencies["java_junit"]
+    androidTestImplementation rootProject.ext.testDependencies["androidx_junit"]
+    androidTestImplementation rootProject.ext.testDependencies["espresso_core"]
+
+    implementation rootProject.ext.dependencies["kt_stdlib"]
+    implementation rootProject.ext.dependencies["androidx_core_ktx"]
+    implementation rootProject.ext.dependencies["androidx_appcompat"]
+    implementation rootProject.ext.dependencies["androidx_constraintlayout"]
 
     // ViewModel
-    implementation "androidx.lifecycle:lifecycle-viewmodel:$lifecycle_version"
+    implementation rootProject.ext.dependencies["androidx_viewmodel"]
     // LiveData
-    implementation "androidx.lifecycle:lifecycle-livedata:$lifecycle_version"
+    implementation rootProject.ext.dependencies["androidx_livedata"]
 
-    implementation 'androidx.activity:activity-ktx:1.1.0'
+    implementation rootProject.ext.dependencies["androidx_activity_ktx"]
 }
