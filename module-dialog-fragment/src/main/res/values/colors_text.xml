@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="text_normal">#333333</color>
+    <color name="text_desc">#999999</color>
+
+    <color name="text_dialog_sure">@color/color_blue_green_selector</color>
+    <color name="text_dialog_cancel">@color/color_gray_selector</color>
+</resources>

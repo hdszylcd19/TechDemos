@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="login_split_line">#949494</color>
+    <color name="split_line_dark">#E5E5E5</color>
+    <color name="main_split_line">#F5F5F5</color>
+    <color name="split_line">#F5F5F5</color>
+    <color name="split_line_light">#F5F5F5</color>
+</resources>

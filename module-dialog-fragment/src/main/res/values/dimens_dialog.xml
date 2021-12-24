@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="dialog_bg_radius">@dimen/dp_10</dimen>
+    <dimen name="dialog_width">@dimen/dp_420</dimen>
+    <dimen name="dialog_button_height">@dimen/dp_72</dimen>
+    <dimen name="dialog_content_min_height">@dimen/dp_182</dimen>
+
+    <dimen name="dialog_content_padding">@dimen/dp_30</dimen>
+
+
+    <dimen name="dialog_head_text_size">@dimen/sp_26</dimen>
+    <dimen name="dialog_content_text_size">@dimen/sp_24</dimen>
+    <dimen name="dialog_button_text_size">@dimen/sp_24</dimen>
+</resources>
