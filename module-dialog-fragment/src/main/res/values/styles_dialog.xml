@@ -34,6 +34,7 @@
         <item name="android:windowMinWidthMajor">40%</item>
     </style>
 
+    <!--dialog弹窗透明样式-->
     <style name="TransparentDialog" parent="@android:style/Theme.Dialog">
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:windowFrame">@null</item>

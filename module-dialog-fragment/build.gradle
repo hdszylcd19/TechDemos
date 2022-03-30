@@ -38,6 +38,8 @@ dependencies {
     androidTestImplementation rootProject.ext.testDependencies["androidx_junit"]
     androidTestImplementation rootProject.ext.testDependencies["espresso_core"]
 
+    implementation rootProject.ext.dependencies["androidx_constraintlayout"]
+
     implementation rootProject.ext.dependencies["androidx_core_ktx"]
     implementation rootProject.ext.dependencies["androidx_appcompat"]
     implementation rootProject.ext.dependencies["android_material"]

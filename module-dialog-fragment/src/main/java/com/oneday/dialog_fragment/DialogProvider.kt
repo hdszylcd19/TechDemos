@@ -10,8 +10,15 @@ import androidx.annotation.StyleRes
 class DialogProvider private constructor() {
 
     class Builder {
+        /**
+         * dialog样式style；默认值为透明样式
+         */
         @StyleRes
         var theme = R.style.TransparentDialog
+
+        /**
+         * dialog是否可以点击外部取消；当该值为true时，表示可以取消；默认值为false不可取消；
+         */
         var cancelable = false
         var applicationOverlay = false
         var message: CharSequence? = null
@@ -78,13 +85,13 @@ class DialogProvider private constructor() {
             return this
         }
 
-        fun buildDialogFragment(viewHolder: DialogViewHolder = MessageDialogHolder(this)): BaseDialogFragment {
+        fun buildDialogFragment(viewHolder: DialogViewHolder = DialogMessageViewHolder(this)): BaseDialogFragment {
             return BaseDialogFragment().init(viewHolder)
         }
 
         fun buildDialog(
             context: Context,
-            viewHolder: DialogViewHolder = MessageDialogHolder(this)
+            viewHolder: DialogViewHolder = DialogMessageViewHolder(this)
         ): CustomDialog {
             return CustomDialog(context, viewHolder)
         }

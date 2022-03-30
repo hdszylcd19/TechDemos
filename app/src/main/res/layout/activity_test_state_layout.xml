@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TestStateLayoutActivity"
+    tools:ignore="HardcodedText">
+
+    <LinearLayout
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@android:color/holo_blue_dark"
+        android:orientation="horizontal"
+        android:paddingTop="@dimen/dp_4"
+        android:paddingBottom="@dimen/dp_4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:onClick="requestSuccess"
+            android:text="成功请求"
+            tools:ignore="UsingOnClickInXml" />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/dp_8"
+            android:layout_weight="1"
+            android:onClick="requestSuccessEmpty"
+            android:text="成功空请求"
+            tools:ignore="UsingOnClickInXml" />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/dp_8"
+            android:layout_weight="1"
+            android:onClick="requestNoNetwork"
+            android:text="没网请求"
+            tools:ignore="UsingOnClickInXml" />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/dp_8"
+            android:layout_weight="1"
+            android:onClick="requestError"
+            android:text="错误请求"
+            tools:ignore="UsingOnClickInXml" />
+
+    </LinearLayout>
+
+    <com.oneday.widget.StateLayout
+        android:id="@+id/stateLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </com.oneday.widget.StateLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
