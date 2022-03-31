@@ -60,6 +60,7 @@
         android:id="@+id/stateLayout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        app:err_layout="@layout/activity_test_other_thread_update_u_i"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

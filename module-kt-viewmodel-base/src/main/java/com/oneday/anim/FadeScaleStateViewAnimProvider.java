@@ -7,10 +7,13 @@ import android.view.animation.DecelerateInterpolator;
 import android.view.animation.ScaleAnimation;
 
 /**
- * 动画效果
+ * Desc:StateLayout状态根布局中，StateView切换时，逐渐消失并且缩放效果的动画提供类
+ *
+ * @author OneD
+ * @version 1.0
+ * @since 2022/3/30 13:09
  */
-
-public class FadeScaleViewAnimProvider implements ViewAnimProvider {
+public class FadeScaleStateViewAnimProvider implements StateViewAnimProvider {
 
     public Animation showAnimation() {
         AnimationSet set = new AnimationSet(true);

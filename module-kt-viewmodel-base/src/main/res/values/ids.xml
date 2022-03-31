@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--状态根布局异常状态文本描述信息id-->
+    <item name="state_tv_msg" type="id" />
+    <!--状态根布局异常状态图片描述信息id-->
+    <item name="state_iv_img" type="id" />
+    <!--状态根布局状态码tag-->
+    <item name="state_tag" type="id" />
+</resources>

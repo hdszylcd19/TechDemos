@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="str_network_err_def">网络异常</string>
+    <string name="str_timeout_def">网络超时</string>
     <string name="str_content_err_def">数据异常错误</string>
     <string name="str_content_empty_def">数据为空</string>
 </resources>
