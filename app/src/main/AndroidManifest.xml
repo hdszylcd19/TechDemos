@@ -58,13 +58,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".TestStateLayoutActivity">
+        <activity
+            android:name=".TestOkHttpActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".TestStateLayoutActivity" />
         <activity android:name=".bitmap.TestBitmapActivity" />
         <activity android:name=".TestOtherThreadUpdateUIActivity" />
         <activity android:name=".RecyclerViewActivity" />

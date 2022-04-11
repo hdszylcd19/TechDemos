@@ -198,8 +198,8 @@ public class StateLayout extends FrameLayout {
     }
 
     private int getStateLayoutId(int state) {
-        Integer layoutId = mStateLayoutIds.get(state);
-        if (layoutId == null) {
+        int layoutId = mStateLayoutIds.get(state);
+        if (layoutId == 0) {
             throw new IllegalArgumentException("[StateLayout]未知状态类型");
         }
 

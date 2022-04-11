@@ -1,6 +1,8 @@
 package com.oneday.demo
 
 
+import android.Manifest
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.view.Gravity
@@ -11,7 +13,9 @@ import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.oneday.base.BaseVMActivity
+import com.oneday.demo.bitmap.TestBitmapActivity
 import com.oneday.demo.viewmodel.TestStateLayoutViewModel
+import com.oneday.ext.showToast
 import com.oneday.utils.DensityUtil
 import kotlinx.android.synthetic.main.activity_test_state_layout.*
 
@@ -19,10 +23,20 @@ import kotlinx.android.synthetic.main.activity_test_state_layout.*
  * 测试状态根布局StateLayout
  */
 class TestStateLayoutActivity : BaseVMActivity<TestStateLayoutViewModel>() {
+    private val permissionList = listOf(Manifest.permission.SYSTEM_ALERT_WINDOW)
 
     override fun getLayoutResId(): Int = R.layout.activity_test_state_layout
 
     override fun init(savedInstanceState: Bundle?) {
+        requestPermissions(permissionList,
+            allGrantedCallback = {
+                "所有权限都已授权".showToast(this)
+            },
+            deniedCallback = {
+                "以下权限被拒绝：$it".showToast(this)
+            }
+        )
+
         stateLayout?.isUseAnimation = true
         mViewModel.dataListState.observe(this) {
             parseState(it,

@@ -25,6 +25,7 @@ ext {
     // 三方库版本
     rxjava_version = "3.0.0"
     permissionx_version = "1.6.1"
+    okhttp_version = "4.9.3"
 
     //*************************引用类库管理**************************
     dependencies = [
@@ -60,7 +61,9 @@ ext {
             // 动态权限申请三方库
             permissionx                     : "com.guolindev.permissionx:permissionx:$permissionx_version",
             // multidex
-            androidx_multidex               : "androidx.multidex:multidex:${androidx_multidex_version}"
+            androidx_multidex               : "androidx.multidex:multidex:${androidx_multidex_version}",
+            // 网络库-okhttp
+            okhttp                          : "com.squareup.okhttp3:okhttp:${okhttp_version}"
     ]
 
     java_junit_version = "4.12"
