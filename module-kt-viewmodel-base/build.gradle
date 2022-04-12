@@ -62,8 +62,7 @@ dependencies {
     // 动态权限申请库
     implementation rootProject.ext.dependencies["permissionx"]
 
-    // 当其它模块依赖当前模块时，如果使用implementation，则在其它模块中无法直接使用‘module-dialog-fragment’中的内容。
-    api project(path: ':module-dialog-fragment')
+    // 当其它模块依赖当前模块时，如果使用implementation，则在其它模块中无法直接使用‘module-network’中的内容。
     api project(path: ':module-network')
 }
 apply from: 'publish-mavencentral.gradle'

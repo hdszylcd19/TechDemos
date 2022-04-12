@@ -1,10 +1,11 @@
-package com.oneday.dialog_fragment
+package com.oneday.dialog
 
 import android.content.Context
 import android.os.Bundle
 import android.view.Gravity
 import android.view.View
 import androidx.annotation.StyleRes
+import com.oneday.base.R
 
 
 class DialogProvider private constructor() {

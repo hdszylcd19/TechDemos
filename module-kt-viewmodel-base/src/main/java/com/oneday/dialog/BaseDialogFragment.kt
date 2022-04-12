@@ -1,4 +1,4 @@
-package com.oneday.dialog_fragment
+package com.oneday.dialog
 
 import android.app.Dialog
 import android.os.Bundle

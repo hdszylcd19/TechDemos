@@ -1,9 +1,10 @@
-package com.oneday.dialog_fragment
+package com.oneday.dialog
 
 import android.app.Dialog
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.oneday.base.R
 
 /**
  * Desc: 加载状态dialogViewHolder

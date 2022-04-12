@@ -1,9 +1,10 @@
-package com.oneday.dialog_fragment
+package com.oneday.dialog
 
 import android.app.Dialog
 import android.os.Build
 import android.view.*
-import com.oneday.dialog_fragment.utils.ScreenUtils
+import com.oneday.base.R
+import com.oneday.utils.ScreenUtils
 
 
 abstract class DialogViewHolder(val builder: DialogProvider.Builder) {

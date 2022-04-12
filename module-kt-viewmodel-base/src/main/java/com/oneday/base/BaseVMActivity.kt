@@ -7,8 +7,8 @@ import android.os.Bundle
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import com.oneday.dialog_fragment.DialogLoadingViewHolder
-import com.oneday.dialog_fragment.DialogProvider
+import com.oneday.dialog.DialogLoadingViewHolder
+import com.oneday.dialog.DialogProvider
 import com.oneday.exception.AppException
 import com.oneday.internal.createViewModel
 import com.permissionx.guolindev.PermissionX
