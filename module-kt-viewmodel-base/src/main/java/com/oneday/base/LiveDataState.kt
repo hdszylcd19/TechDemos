@@ -11,7 +11,7 @@ import com.oneday.exception.AppExceptionHandler
  * @version 1.0
  * @since 2021/12/29 16:08
  */
-open class LiveDataState<out T> {
+sealed class LiveDataState<out T> {
     companion object {
         fun <T> onLoading(loadingMsg: String? = "加载中..."): LiveDataState<T> = Loading(loadingMsg)
         fun <T> onSuccess(data: T): LiveDataState<T> = Success(data)

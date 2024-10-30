@@ -10,8 +10,8 @@ android {
     defaultConfig {
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 1
-        versionName "1.0"
+        versionCode VERSION_CODE.toInteger() //版本号和gradle.properties中的VERSION_CODE保持一致
+        versionName VERSION_NAME //版本名称和gradle.properties中的VERSION_NAME保持一致
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -32,19 +32,13 @@ android {
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
-
-    buildFeatures {
-        viewBinding true
-    }
 }
 
 dependencies {
-    implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'com.google.android.material:material:1.3.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
     testImplementation rootProject.ext.testDependencies["java_junit"]
     androidTestImplementation rootProject.ext.testDependencies["androidx_junit"]
     androidTestImplementation rootProject.ext.testDependencies["espresso_core"]
 
-    implementation rootProject.ext.dependencies["okhttp"]
+    api rootProject.ext.dependencies["okhttp"]
+    api rootProject.ext.dependencies["gson"]
 }

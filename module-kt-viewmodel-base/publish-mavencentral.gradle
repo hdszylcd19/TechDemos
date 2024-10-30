@@ -98,6 +98,7 @@ afterEvaluate { project ->
 
     task androidSourcesJar(type: Jar) {
         classifier = 'sources'
+        classifier('sources')
         from 'src/main/java'
     }
 
