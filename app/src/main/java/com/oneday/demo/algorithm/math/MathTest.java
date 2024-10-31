@@ -1,9 +1,10 @@
 package com.oneday.demo.algorithm.math;
 
 import com.oneday.demo.algorithm.BaseAlgorithmTest;
+import com.oneday.demo.utils.NumberUtils;
 
 /**
- * Desc:
+ * Desc: 获取两个正整数的最大公约数
  *
  * @author JiLin
  * @version 1.0
@@ -11,7 +12,9 @@ import com.oneday.demo.algorithm.BaseAlgorithmTest;
  */
 public class MathTest extends BaseAlgorithmTest {
     public static void main(String[] args) {
-        printGcd(getRandomInt(), getRandomInt());
+        int a = NumberUtils.generateRandomInt(0, 10000);
+        int b = NumberUtils.generateRandomInt(0, 10000);
+        printGcd(a, b);
         printGcd(1024, 768);
         printGcd(1200, 1920);
         printGcd(1200, 2000);

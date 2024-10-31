@@ -1,5 +1,7 @@
 package com.oneday.demo.algorithm;
 
+import com.oneday.demo.utils.NumberUtils;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -18,8 +20,8 @@ import java.util.List;
  */
 public class IntersectAlgorithmTest extends BaseAlgorithmTest {
     public static void main(String[] args) {
-        int[] arr1 = getRandomArr(100);
-        int[] arr2 = getRandomArr(100);
+        int[] arr1 = NumberUtils.generateRandomIntArray(0, 100);
+        int[] arr2 = NumberUtils.generateRandomIntArray(0, 100);
         System.out.println("arr1 = " + Arrays.toString(arr1));
         System.out.println("arr2 = " + Arrays.toString(arr2));
 

@@ -1,6 +1,7 @@
 package com.oneday.demo.algorithm.sort;
 
 import com.oneday.demo.algorithm.BaseAlgorithmTest;
+import com.oneday.demo.utils.NumberUtils;
 
 import java.util.Arrays;
 import java.util.LinkedList;
@@ -46,7 +47,7 @@ import java.util.List;
  */
 class PancakeSortTest extends BaseAlgorithmTest {
     public static void main(String[] args) {
-        int[] arr = getRandomArr(20);
+        int[] arr = NumberUtils.generateRandomIntArray(0, 20);
         System.out.println("烧饼排序前 = " + Arrays.toString(arr));
 
         pancakeSort(arr);

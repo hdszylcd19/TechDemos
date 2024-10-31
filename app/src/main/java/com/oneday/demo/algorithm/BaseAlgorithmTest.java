@@ -1,7 +1,5 @@
 package com.oneday.demo.algorithm;
 
-import java.util.Random;
-
 /**
  * Desc:
  * Company: XueHai
@@ -14,7 +12,6 @@ import java.util.Random;
 public abstract class BaseAlgorithmTest {
 
     private static long s;
-    private static Random sRandom = new Random();
 
     protected static void before() {
         s = System.currentTimeMillis();
@@ -26,26 +23,5 @@ public abstract class BaseAlgorithmTest {
 
     protected static void printTime(String pre) {
         System.out.println(pre + "耗时 : " + (System.currentTimeMillis() - s) + "毫秒");
-    }
-
-    protected static int[] getRandomArr(int bound) {
-        return getRandomArr(sRandom.nextInt(bound), bound);
-    }
-
-    protected static int[] getRandomArr(int size, int bound) {
-        int[] arr = new int[size];
-        for (int i = 0; i < size; i++) {
-            arr[i] = sRandom.nextInt(bound);
-        }
-
-        return arr;
-    }
-
-    protected static int getRandomInt() {
-        return getRandomInt(Integer.MAX_VALUE);
-    }
-
-    protected static int getRandomInt(int bound) {
-        return sRandom.nextInt(bound);
     }
 }

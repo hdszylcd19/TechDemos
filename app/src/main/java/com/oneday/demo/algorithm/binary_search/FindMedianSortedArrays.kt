@@ -1,11 +1,40 @@
 package com.oneday.demo.algorithm.binary_search
 
 import com.oneday.demo.algorithm.BaseAlgorithmTest
+import com.oneday.demo.utils.NumberUtils.generateRandomInt
+import com.oneday.demo.utils.NumberUtils.generateRandomSortedIntArray
 import kotlin.math.max
 import kotlin.math.min
+import kotlin.time.ExperimentalTime
+import kotlin.time.measureTime
 
 /**
  * 寻找两个有序数组的中位数
+ * 给定两个大小分别为 m 和 n 的正序（从小到大）数组 nums1 和 nums2。请你找出并返回这两个正序数组的 中位数 。
+ *
+ * 算法的时间复杂度应该为 O(log (m+n)) 。
+ *
+ * 示例 1：
+ *
+ * 输入：nums1 = [1,3], nums2 = [2]
+ * 输出：2.00000
+ * 解释：合并数组 = [1,2,3] ，中位数 2
+ * 示例 2：
+ *
+ * 输入：nums1 = [1,2], nums2 = [3,4]
+ * 输出：2.50000
+ * 解释：合并数组 = [1,2,3,4] ，中位数 (2 + 3) / 2 = 2.5
+ *
+ *
+ * 提示：
+ *
+ * nums1.length == m
+ * nums2.length == n
+ * 0 <= m <= 1000
+ * 0 <= n <= 1000
+ * 1 <= m + n <= 2000
+ * -10⁶ <= nums1[i], nums2[i] <= 10⁶
+ *
  * Desc: 题目地址：https://leetcode.cn/problems/median-of-two-sorted-arrays/description/?envType=problem-list-v2&envId=array
  *
  * @author OneD
@@ -14,9 +43,19 @@ import kotlin.math.min
  */
 object FindMedianSortedArrays : BaseAlgorithmTest() {
 
+    @OptIn(ExperimentalTime::class)
     @JvmStatic
     fun main(args: Array<String>) {
-        println(findMedianSortedArrays(intArrayOf(1, 3), intArrayOf(2)))
+        val nums1 = generateRandomSortedIntArray(length = generateRandomInt(1, 100))
+        val nums2 = generateRandomSortedIntArray(length = generateRandomInt(1, 100))
+        measureTime {
+            val median = findMedianSortedArrays(nums1, nums2)
+            println("中位数 = $median")
+        }.apply {
+            println("nums1[${nums1.size}] = ${nums1.contentToString()}")
+            println("nums2[${nums2.size}] = ${nums2.contentToString()}")
+            println("执行耗时：${this}")
+        }
     }
 
     /**

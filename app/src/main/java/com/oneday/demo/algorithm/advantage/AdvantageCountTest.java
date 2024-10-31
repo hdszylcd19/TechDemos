@@ -1,6 +1,7 @@
 package com.oneday.demo.algorithm.advantage;
 
 import com.oneday.demo.algorithm.BaseAlgorithmTest;
+import com.oneday.demo.utils.NumberUtils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -18,7 +19,7 @@ import java.util.List;
 /*
     优势洗牌：https://leetcode-cn.com/problems/advantage-shuffle/
 
-    给定两个大小相等的数组 A 和 B，A 相对于 B 的优势可以用满足 A[i] > B[i] 的索引 i 的数目来描述。
+    给定两个长度相等的数组 A 和 B，A 相对于 B 的优势可以用满足 A[i] > B[i] 的索引 i 的数目来描述。
 
     返回 A 的任意排列，使其相对于 B 的优势最大化。
 
@@ -45,9 +46,9 @@ import java.util.List;
  */
 public class AdvantageCountTest extends BaseAlgorithmTest {
     public static void main(String[] args) {
-        int[] nums1 = getRandomArr(10, 1000);
+        int[] nums1 = NumberUtils.generateRandomIntArray(0, 1000, 10);
         System.out.println("nums1 = " + Arrays.toString(nums1));
-        int[] nums2 = getRandomArr(10, 1000);
+        int[] nums2 = NumberUtils.generateRandomIntArray(0, 1000, 10);
         System.out.println("nums2 = " + Arrays.toString(nums2));
         int[] advantageNums = advantageCount2(nums1, nums2);
         System.out.println("advantageNums = " + Arrays.toString(advantageNums));
