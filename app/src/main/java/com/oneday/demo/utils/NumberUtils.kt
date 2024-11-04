@@ -30,7 +30,7 @@ object NumberUtils {
      * @param max 随机数组元素的最大值
      */
     @JvmStatic
-    fun generateRandomIntArray(
+    fun generateRandomSizeIntArray(
         min: Int = DEF_MIN,
         max: Int = DEF_MAX
     ): IntArray {

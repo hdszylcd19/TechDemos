@@ -18,7 +18,7 @@ public class QuickSortUtilTest extends BaseAlgorithmTest {
     private static int count = 1;
 
     public static void main(String[] args) {
-        int[] arr = NumberUtils.generateRandomIntArray(0, 200);
+        int[] arr = NumberUtils.generateRandomIntArray(0, 200, 10);
         int[] arrCopy = Arrays.copyOf(arr, arr.length);
         int[] arrCopy1 = Arrays.copyOf(arr, arr.length);
         System.out.println("排序前： " + Arrays.toString(arr));

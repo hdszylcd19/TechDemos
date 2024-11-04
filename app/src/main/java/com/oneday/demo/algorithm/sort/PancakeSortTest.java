@@ -47,7 +47,7 @@ import java.util.List;
  */
 class PancakeSortTest extends BaseAlgorithmTest {
     public static void main(String[] args) {
-        int[] arr = NumberUtils.generateRandomIntArray(0, 20);
+        int[] arr = NumberUtils.generateRandomIntArray(0, 20, 10);
         System.out.println("烧饼排序前 = " + Arrays.toString(arr));
 
         pancakeSort(arr);
