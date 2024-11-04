@@ -13,4 +13,77 @@
     <string name="menu_tools">Tools</string>
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
+
+    <!--角标符号-->
+    <string-array name="corner_mark_symbol_data_list">
+        <!--角标上-->
+        <item>"⁰"</item>
+        <item>"¹"</item>
+        <item>"²"</item>
+        <item>"³"</item>
+        <item>"⁴"</item>
+        <item>"⁵"</item>
+        <item>"⁶"</item>
+        <item>"⁷"</item>
+        <item>"⁸"</item>
+        <item>"⁹"</item>
+
+        <item>"⁺"</item>
+        <item>"⁻"</item>
+        <item>"*"</item>
+        <item>"⁼"</item>
+        <item>"⁽⁾"</item>
+
+        <item>"ⁿ"</item>
+        <item>"º"</item>
+        <item>"˙"</item>
+
+        <item>"ᵃ"</item>
+        <item>"ᵇ"</item>
+        <item>"ᶜ"</item>
+        <item>"ᵈ"</item>
+        <item>"ᵉ"</item>
+        <item>"ᶠ"</item>
+        <item>"ᵍ"</item>
+        <item>"ʰ"</item>
+        <item>"ⁱ"</item>
+        <item>"ʲ"</item>
+        <item>"ᵏ"</item>
+        <item>"ˡ"</item>
+        <item>"ᵐ"</item>
+        <item>"ⁿ"</item>
+        <item>"ᵒ"</item>
+        <item>"ᵖ"</item>
+        <item>"ʳ"</item>
+        <item>"ˢ"</item>
+        <item>"ᵗ"</item>
+        <item>"ᵘ"</item>
+        <item>"ᵛ"</item>
+        <item>"ʷ"</item>
+        <item>"ˣ"</item>
+        <item>"ʸ"</item>
+        <item>"ᶻ"</item>
+
+        <!--角标下-->
+        <item>"₀"</item>
+        <item>"₁"</item>
+        <item>"₂"</item>
+        <item>"₃"</item>
+        <item>"₄"</item>
+        <item>"₅"</item>
+        <item>"₆"</item>
+        <item>"₇"</item>
+        <item>"₈"</item>
+        <item>"₉"</item>
+        <item>"₊"</item>
+        <item>"₋"</item>
+        <item>"₌"</item>
+        <item>"₍₎"</item>
+        <item>"ₐ"</item>
+        <item>"ₑ"</item>
+        <item>"ₒ"</item>
+        <item>"ₓ"</item>
+        <item>"ᵧ"</item>
+        <item>"ₔ"</item>
+    </string-array>
 </resources>
