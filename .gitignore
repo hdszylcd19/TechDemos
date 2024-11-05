@@ -54,7 +54,4 @@ captures/
 ### Android Patch ###
 gen-external-apklibs
 
-# 忽略敏感信息
-module-kt-viewmodel-base/gradle.properties
-module-network/gradle.properties
 
