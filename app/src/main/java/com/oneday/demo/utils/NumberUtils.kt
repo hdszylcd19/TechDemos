@@ -77,4 +77,22 @@ object NumberUtils {
         if (isOrder) array.sort() else array.sortDescending()
         return array
     }
+
+    /**
+     * 根据给定参数，随机生成一个有序的不重复的Int类型数组
+     * @param min 随机数组元素的最小值
+     * @param max 随机数组元素的最大值
+     * @param length 数组的长度
+     * @param isOrder true:正序 false:倒序
+     */
+    @JvmStatic
+    fun generateRandomSortedUniqueIntArray(
+        min: Int = DEF_MIN,
+        max: Int = DEF_MAX,
+        length: Int = DEF_LENGTH,
+        isOrder: Boolean = DEF_IS_ORDER
+    ): IntArray {
+        return generateRandomSortedIntArray(min, max, length, isOrder)
+            .toSet().toIntArray()
+    }
 }
