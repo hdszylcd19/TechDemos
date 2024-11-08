@@ -9,7 +9,7 @@ package com.oneday.demo.algorithm.tree
  * @version 1.0
  * @since 2020/9/18 0018 11:27
  */
-internal class TreeNode(@JvmField var value: Int) {
+class TreeNode(@JvmField var value: Int) {
     @JvmField
     var left: TreeNode? = null
 
