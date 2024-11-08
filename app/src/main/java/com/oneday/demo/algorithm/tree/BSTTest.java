@@ -1,4 +1,4 @@
-package com.oneday.demo.algorithm.binary_tree;
+package com.oneday.demo.algorithm.tree;
 
 /**
  * Desc:二叉搜索树（Binary Search Tree，简称 BST）是一种很常用的的二叉树。它的定义是：一个二叉树中，
@@ -27,9 +27,9 @@ class BSTTest {
         if (root == null) return new TreeNode(val);
         // if (root.val == val)
         //     BST 中一般不会插入已存在元素
-        if (root.val < val)
+        if (root.value < val)
             root.right = insertIntoBST(root.right, val);
-        if (root.val > val)
+        if (root.value > val)
             root.left = insertIntoBST(root.left, val);
         return root;
     }
@@ -40,8 +40,8 @@ class BSTTest {
 
     static boolean isValidBST(TreeNode root, TreeNode min, TreeNode max) {
         if (root == null) return true;
-        if (min != null && root.val <= min.val) return false;
-        if (max != null && root.val >= max.val) return false;
+        if (min != null && root.value <= min.value) return false;
+        if (max != null && root.value >= max.value) return false;
         return isValidBST(root.left, min, root)
                 && isValidBST(root.right, root, max);
     }
@@ -52,17 +52,17 @@ class BSTTest {
         }
 
         printBST(root.left);
-        System.out.print("| " + root.val + " |");
+        System.out.print("| " + root.value + " |");
         printBST(root.right);
     }
 
     /* 二叉树遍历框架 */
     private static void traverse(TreeNode root) {
-        // 前序遍历
+        // 前序遍历 root.value写在这儿
         traverse(root.left);
-        // 中序遍历
+        // 中序遍历 root.value写在这儿
         traverse(root.right);
-        // 后序遍历
+        // 后序遍历 root.value写在这儿
     }
 
     // 定义：count(root) 返回以 root 为根的树有多少节点

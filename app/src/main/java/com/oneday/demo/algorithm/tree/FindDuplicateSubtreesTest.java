@@ -1,4 +1,4 @@
-package com.oneday.demo.algorithm.binary_tree;
+package com.oneday.demo.algorithm.tree;
 
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -64,7 +64,7 @@ class FindDuplicateSubtreesTest {
 
         String left = traverse(root.left);
         String right = traverse(root.right);
-        String rootDes = left + "," + right + "," + root.val; //当前节点的字符串描述
+        String rootDes = left + "," + right + "," + root.value; //当前节点的字符串描述
 
         Integer count = map.get(rootDes);
         count = count == null ? 0 : count;
