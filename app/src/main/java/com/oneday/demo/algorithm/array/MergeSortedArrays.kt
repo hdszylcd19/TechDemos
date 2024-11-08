@@ -1,4 +1,4 @@
-package com.oneday.demo.algorithm.binary_search
+package com.oneday.demo.algorithm.array
 
 import com.oneday.demo.algorithm.BaseAlgorithmTest
 
