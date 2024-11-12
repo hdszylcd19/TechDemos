@@ -10,7 +10,7 @@ import com.oneday.demo.utils.NumberUtils;
  * @version 1.0
  * @since 2020/11/23 10:10
  */
-public class MathTest extends BaseAlgorithmTest {
+public class GCD extends BaseAlgorithmTest {
     public static void main(String[] args) {
         int a = NumberUtils.generateRandomInt(0, 10000);
         int b = NumberUtils.generateRandomInt(0, 10000);
