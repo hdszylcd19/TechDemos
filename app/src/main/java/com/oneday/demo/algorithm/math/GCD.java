@@ -56,13 +56,13 @@ public class GCD extends BaseAlgorithmTest {
     }
 
     /*  辗转相除法证明过程：
-        设g是a,b的公约数，则a,b可由g来表示：
+        设g是a,b的最大公约数，则a,b可由g来表示：
         a = xg, b = yg (x,y为整数)
         又，a可由b表示（任意一个数都可以由另一个数来表示）：
         a = kb + r (k为整数，r为a除以b所得余数)
         => r = a - kb = xg - kyg = (x - ky)g
-        即，g也是r的约数。
-        这样，g就是(b, r)即(b, a mod b)的公约数。
+        即，g也是r的最大约数。
+        这样，g就是(b, r)即(b, a mod b)的最大公约数。
      */
     // 辗转相除法（递归写法）
     public static int gcd_division_recursive(int a, int b) {
