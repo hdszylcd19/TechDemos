@@ -45,7 +45,15 @@ import java.util.LinkedList
 object MinDepth : BaseAlgorithmTest() {
     @JvmStatic
     fun main(args: Array<String>) {
+        val left = TreeNode(2)
+        left.left = TreeNode(4)
+        left.right = TreeNode(5)
+        val root = TreeNode(1)
+        root.left = left
+        root.right = TreeNode(3)
 
+        println("dfs最小深度：${minDepth(root)}")
+        println("bfs最小深度：${bfs(root)}")
     }
 
     //记录最小深度（根节点到最近叶子节点的距离）
@@ -84,7 +92,7 @@ object MinDepth : BaseAlgorithmTest() {
      * 从时间复杂度的角度来看，两种算法在最坏情况下都会遍历所有节点，时间复杂度都是O(n)。但在一般情况下，显然，BFS算法的时间复杂度更优。
      * 所以在寻找最短路径的问题中，BFS算法是首选。
      */
-    fun minDepth2(root: TreeNode?): Int {
+    fun bfs(root: TreeNode?): Int {
         if (root == null) {
             return 0
         }
